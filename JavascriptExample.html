@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Web Development Examples</title>
+    <script>
+        function showAlert() {
+            alert("Hello, this is an alert message!");
+        }
+
+        function changeText() {
+            document.getElementById("text").innerText = "Text Changed!";
+        }
+
+        function changeBackgroundColor() {
+            let colors = ["red", "blue", "green", "yellow", "purple"];
+            let randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        function displayDate() {
+            document.getElementById("date").innerText = new Date().toLocaleString();
+            setInterval(displayDate, 1000);
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <h2>Easy JavaScript Examples</h2>
+    <button onclick="showAlert()">Show Alert</button>
+    <p id="text">Click the button to change this text.</p>
+    <button onclick="changeText()">Change Text</button>
+    <br><br>
+    <button onclick="changeBackgroundColor()">Change Background Color</button>
+    <br><br>
+    <button onclick="displayDate()">Show Current Date & Time</button>
+    <p id="date"></p>
+
+</body>
+
+</html>
