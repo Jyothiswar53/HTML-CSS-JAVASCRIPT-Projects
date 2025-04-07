@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #e0e0e0;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .calculator {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 1px 19px 15px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            padding: 20px;
+        }
+
+        .display {
+            background: #222;
+            color: #fff;
+            font-size: 2.5rem;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: right;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .btn {
+            background: #6cc5f1;
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #dfe2e5;
+        }
+
+        .operator {
+            background-color: #f8bbd0;
+            color: #000;
+        }
+
+        .equal {
+            grid-column: span 2;
+            background-color: #81c784;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+
+            <button class="btn operator" onclick="clearDisplay()">C</button>
+            <button class="btn operator" onclick="deleteLast()">DEL</button>
+            <button class="btn operator" onclick="appendValue()">%</button>
+            <button class="btn operator" onclick="appendValue()">÷</button>
+
+            <button class="btn" onclick="appendValue('7')">7</button>
+            <button class="btn" onclick="appendValue('8')">8</button>
+            <button class="btn" onclick="appendValue('9')">9</button>
+            <button class="btn operator" onclick="appendValue('*')">x</button>
+
+            <button class="btn" onclick="appendValue('4')">4</button>
+            <button class="btn" onclick="appendValue('5')">5</button>
+            <button class="btn" onclick="appendValue('6')">6</button>
+            <button class="btn operator" onclick="appendValue('-')">-</button>
+
+            <button class="btn" onclick="appendValue('1')">1</button>
+            <button class="btn" onclick="appendValue('2')">2</button>
+            <button class="btn" onclick="appendValue('3')">3</button>
+            <button class="btn operator" onclick="appendValue('+')">+</button>
+
+            <button class="btn" onclick="appendValue('0')">0</button>
+            <button class="btn" onclick="appendValue('.')">.</button>
+            <button class="btn equal" onclick="calculate('=')">=</button>
+
+        </div>
+
+    </div>
+    <script>
+        
+        let display = document.getElementById('display');
+
+        function appendValue(val) {
+            if (display.textContent == '0' || display.textContent == 'Error') {
+                display.textContent = val;
+            }
+            else {
+                display.textContent += val;
+            }
+        }
+
+        function clearDisplay() {
+            display.textContent = '0';
+        }
+
+        function deleteLast() {
+            if (display.textContent.length == 1 || display.textContent == 'Error') {
+                display.textContent = '0';
+            }
+            else {
+                display.textContent = display.textContent.slice(0, -1);
+            }
+        }
+
+        function calculate() {
+            try {
+                let result = eval(display.textContent);
+                display.textContent = result;
+            }
+            catch (error) {
+                display.textContent = 'Error';
+            }
+        }
+    </script>
+</body>
+
+</html>
