@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f7f7;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <input type="text" id="text-input" placeholder="Enter text...">
+        <button id="check-btn">Check</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById("check-btn").addEventListener("click", function () {
+            let inputText = document.getElementById("text-input").value;
+            let resultElement = document.getElementById("result");
+
+            if (inputText.trim() === "") {
+                alert("Please input a value.");
+                return;
+            }
+
+            let formattedText = inputText.toLowerCase().replace(/[^a-z0-9]/g, ""); 
+            let reversedText = formattedText.split("").reverse().join("");
+
+            if (formattedText === reversedText) {
+                resultElement.textContent = `${inputText} is a palindrome.`;
+                resultElement.style.color = "green";
+
+            } else {
+                resultElement.textContent = `${inputText} is not a palindrome.`;
+                resultElement.style.color = "red";
+            }
+        });
+    </script>
+</body>
+
+</html>
